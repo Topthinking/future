@@ -1,10 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"math/rand"
+	"os"
 	"sync"
 	"time"
 
+	"github.com/garyburd/redigo/redis"
 	"github.com/gin-gonic/gin"
 )
 
@@ -64,15 +67,24 @@ func test() (res string) {
 }
 
 func main() {
-	r := gin.Default()
+	r, err := redis.Dial("tcp", os.Getenv("REDIS_HOST")+":6379")
+	if err != nil {
+		fmt.Println("Connect to redis error", err)
+		return
+	}
+	defer r.Close()
 
-	r.GET("/ping", func(c *gin.Context) {
+	route := gin.Default()
+
+	route.GET("/", func(c *gin.Context) {
 		res := test()
-		c.String(200, res)
+		r.Do("incr", "hits")
+		number, _ := redis.String(r.Do("GET", "hits"))
+		c.String(200, res+number)
 		// c.JSON(200, gin.H{
 		// 	"message": "hello world",
 		// })
 	})
 
-	r.Run(":8000")
+	route.Run(":8000")
 }
