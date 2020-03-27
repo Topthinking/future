@@ -1,0 +1,9 @@
+FROM busybox
+
+WORKDIR / 
+
+ADD main /
+
+EXPOSE 8000
+
+ENTRYPOINT ["./main"]
