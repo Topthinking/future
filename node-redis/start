@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# 创建镜像
+docker-compose build --no-cache
+
+# 启动docker-compose
+docker-compose up -d
