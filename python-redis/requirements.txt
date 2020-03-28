@@ -1,0 +1,7 @@
+Requirement already satisfied: flask in /Users/top/anaconda3/lib/python3.6/site-packages (0.12.2)
+Requirement already satisfied: redis in /Users/top/anaconda3/lib/python3.6/site-packages (3.4.1)
+Requirement already satisfied: Werkzeug>=0.7 in /Users/top/anaconda3/lib/python3.6/site-packages (from flask) (0.14.1)
+Requirement already satisfied: Jinja2>=2.4 in /Users/top/anaconda3/lib/python3.6/site-packages (from flask) (2.10)
+Requirement already satisfied: itsdangerous>=0.21 in /Users/top/anaconda3/lib/python3.6/site-packages (from flask) (0.24)
+Requirement already satisfied: click>=2.0 in /Users/top/anaconda3/lib/python3.6/site-packages (from flask) (6.7)
+Requirement already satisfied: MarkupSafe>=0.23 in /Users/top/anaconda3/lib/python3.6/site-packages (from Jinja2>=2.4->flask) (1.0)
